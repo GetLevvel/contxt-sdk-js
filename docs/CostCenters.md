@@ -1,22 +1,22 @@
-<a name="CostCenters"></a>
+<a name="Facilities.costCenters"></a>
 
-## CostCenters
+## Facilities.costCenters
 Module that provides access to cost centers, and helps manage
 the relationship between those cost centers and facilities
 
-**Kind**: global class  
+**Kind**: static class of [<code>Facilities</code>](#Facilities)  
 
-* [CostCenters](#CostCenters)
-    * [new CostCenters(sdk, request, baseUrl)](#new_CostCenters_new)
-    * [.addFacility(costCenterId, facilityId)](#CostCenters+addFacility) ⇒ <code>Promise</code>
-    * [.create(costCenter)](#CostCenters+create) ⇒ <code>Promise</code>
-    * [.delete(costCenterId)](#CostCenters+delete) ⇒ <code>Promise</code>
-    * [.getAll()](#CostCenters+getAll) ⇒ <code>Promise</code>
-    * [.getAllByOrganizationId(organizationId)](#CostCenters+getAllByOrganizationId) ⇒ <code>Promise</code>
-    * [.removeFacility(costCenterId, facilityId)](#CostCenters+removeFacility) ⇒ <code>Promise</code>
-    * [.update(costCenterId, update)](#CostCenters+update) ⇒ <code>Promise</code>
+* [.costCenters](#Facilities.costCenters)
+    * [new CostCenters(sdk, request, baseUrl)](#new_Facilities.costCenters_new)
+    * [.addFacility(costCenterId, facilityId)](#Facilities.costCenters+addFacility) ⇒ <code>Promise</code>
+    * [.create(costCenter)](#Facilities.costCenters+create) ⇒ <code>Promise</code>
+    * [.delete(costCenterId)](#Facilities.costCenters+delete) ⇒ <code>Promise</code>
+    * [.getAll()](#Facilities.costCenters+getAll) ⇒ <code>Promise</code>
+    * [.getAllByOrganizationId(organizationId)](#Facilities.costCenters+getAllByOrganizationId) ⇒ <code>Promise</code>
+    * [.removeFacility(costCenterId, facilityId)](#Facilities.costCenters+removeFacility) ⇒ <code>Promise</code>
+    * [.update(costCenterId, update)](#Facilities.costCenters+update) ⇒ <code>Promise</code>
 
-<a name="new_CostCenters_new"></a>
+<a name="new_Facilities.costCenters_new"></a>
 
 ### new CostCenters(sdk, request, baseUrl)
 
@@ -26,7 +26,7 @@ the relationship between those cost centers and facilities
 | request | <code>Object</code> | An instance of the request module tied to this module's audience. |
 | baseUrl | <code>string</code> | The base URL provided by the parent module |
 
-<a name="CostCenters+addFacility"></a>
+<a name="Facilities.costCenters+addFacility"></a>
 
 ### contxtSdk.facilities.costCenters.addFacility(costCenterId, facilityId) ⇒ <code>Promise</code>
 Adds a facility to a cost center
@@ -34,7 +34,7 @@ Adds a facility to a cost center
 API Endpoint: '/costcenters/:costCenterId/facility/:facilityId'
 Method: POST
 
-**Kind**: instance method of [<code>CostCenters</code>](#CostCenters)  
+**Kind**: instance method of [<code>costCenters</code>](#Facilities.costCenters)  
 **Fulfill**: [<code>CostCenterFacility</code>](./Typedefs.md#CostCenterFacility) Information about the new cost center facility relationship  
 **Reject**: <code>Error</code>  
 
@@ -50,7 +50,7 @@ contxtSdk.facilities.costCenters
   .then((costCenter) => console.log(costCenter))
   .catch((err) => console.log(err));
 ```
-<a name="CostCenters+create"></a>
+<a name="Facilities.costCenters+create"></a>
 
 ### contxtSdk.facilities.costCenters.create(costCenter) ⇒ <code>Promise</code>
 Creates a new cost center
@@ -58,7 +58,7 @@ Creates a new cost center
 API Endpoint: '/costcenters'
 Method: POST
 
-**Kind**: instance method of [<code>CostCenters</code>](#CostCenters)  
+**Kind**: instance method of [<code>costCenters</code>](#Facilities.costCenters)  
 **Fulfill**: [<code>CostCenter</code>](./Typedefs.md#CostCenter) Information about the new cost center  
 **Reject**: <code>Error</code>  
 
@@ -80,7 +80,7 @@ contxtSdk.facilities.costCenters
   .then((costCenter) => console.log(costCenter))
   .catch((err) => console.log(err));
 ```
-<a name="CostCenters+delete"></a>
+<a name="Facilities.costCenters+delete"></a>
 
 ### contxtSdk.facilities.costCenters.delete(costCenterId) ⇒ <code>Promise</code>
 Delete a cost center
@@ -88,7 +88,7 @@ Delete a cost center
 API Endpoint: '/costcenters/:costCenterId'
 Method: DELETE
 
-**Kind**: instance method of [<code>CostCenters</code>](#CostCenters)  
+**Kind**: instance method of [<code>costCenters</code>](#Facilities.costCenters)  
 **Fulfill**: <code>undefined</code>  
 **Reject**: <code>Error</code>  
 
@@ -102,7 +102,7 @@ contxtSdk.facilities.costCenters.delete(
   'e4fec739-56aa-4b50-8dab-e9d6b9c91a5d'
 );
 ```
-<a name="CostCenters+getAll"></a>
+<a name="Facilities.costCenters+getAll"></a>
 
 ### contxtSdk.facilities.costCenters.getAll() ⇒ <code>Promise</code>
 Get a listing of all cost centers
@@ -110,7 +110,7 @@ Get a listing of all cost centers
 API Endpoint: '/costcenters'
 METHOD: GET
 
-**Kind**: instance method of [<code>CostCenters</code>](#CostCenters)  
+**Kind**: instance method of [<code>costCenters</code>](#Facilities.costCenters)  
 **Fulfill**: <code>CostCenter[]</code>  
 **Reject**: <code>Error</code>  
 **Example**  
@@ -120,7 +120,7 @@ contxtSdk.facilities.costCenters
   .then((costCenters) => console.log(costCenters))
   .catch((err) => console.log(err));
 ```
-<a name="CostCenters+getAllByOrganizationId"></a>
+<a name="Facilities.costCenters+getAllByOrganizationId"></a>
 
 ### contxtSdk.facilities.costCenters.getAllByOrganizationId(organizationId) ⇒ <code>Promise</code>
 Get a listing of all cost centers for an organization
@@ -128,7 +128,7 @@ Get a listing of all cost centers for an organization
 API Endpoint: '/organizations/:organizationId/costcenters'
 METHOD: GET
 
-**Kind**: instance method of [<code>CostCenters</code>](#CostCenters)  
+**Kind**: instance method of [<code>costCenters</code>](#Facilities.costCenters)  
 **Fulfill**: <code>CostCenter[]</code>  
 **Reject**: <code>Error</code>  
 
@@ -143,7 +143,7 @@ contxtSdk.facilities.costCenters
   .then((costCenters) => console.log(costCenters))
   .catch((err) => console.log(err));
 ```
-<a name="CostCenters+removeFacility"></a>
+<a name="Facilities.costCenters+removeFacility"></a>
 
 ### contxtSdk.facilities.costCenters.removeFacility(costCenterId, facilityId) ⇒ <code>Promise</code>
 Removes a facility from a cost center
@@ -151,7 +151,7 @@ Removes a facility from a cost center
 API Endpoint: '/costcenters/:costCenterId/facility/:facilityId'
 Method: DELETE
 
-**Kind**: instance method of [<code>CostCenters</code>](#CostCenters)  
+**Kind**: instance method of [<code>costCenters</code>](#Facilities.costCenters)  
 **Fulfill**: <code>undefined</code>  
 **Reject**: <code>Error</code>  
 
@@ -166,7 +166,7 @@ contxtSdk.facilities.costCenters
   .removeFacility('b3dbaae3-25dd-475b-80dc-66296630a8d0', 4)
   .catch((err) => console.log(err));
 ```
-<a name="CostCenters+update"></a>
+<a name="Facilities.costCenters+update"></a>
 
 ### contxtSdk.facilities.costCenters.update(costCenterId, update) ⇒ <code>Promise</code>
 Updates an existing cost center
@@ -174,7 +174,7 @@ Updates an existing cost center
 API Endpoint: '/costcenters/:costCenterId'
 Method: PUT
 
-**Kind**: instance method of [<code>CostCenters</code>](#CostCenters)  
+**Kind**: instance method of [<code>costCenters</code>](#Facilities.costCenters)  
 **Fulfill**: [<code>FacilityGrouping</code>](./Typedefs.md#FacilityGrouping) Information about the updated cost center  
 **Reject**: <code>Error</code>  
 

@@ -32,6 +32,7 @@ import {
  * Module that provides access to facility groupings, and helps manage
  * the relationship between those groupings and facilities
  *
+ * @alias Facilities.groupings
  * @typicalname contxtSdk.facilities.groupings
  */
 class FacilityGroupings {

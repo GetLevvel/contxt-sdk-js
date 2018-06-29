@@ -1,15 +1,15 @@
-<a name="Fields"></a>
+<a name="Iot.fields"></a>
 
-## Fields
+## Iot.fields
 Module that provides access to field information
 
-**Kind**: global class  
+**Kind**: static class of [<code>Iot</code>](#Iot)  
 
-* [Fields](#Fields)
-    * [new Fields(sdk, request, baseUrl)](#new_Fields_new)
-    * [.get(outputFieldId)](#Fields+get) ⇒ <code>Promise</code>
+* [.fields](#Iot.fields)
+    * [new Fields(sdk, request, baseUrl)](#new_Iot.fields_new)
+    * [.get(outputFieldId)](#Iot.fields+get) ⇒ <code>Promise</code>
 
-<a name="new_Fields_new"></a>
+<a name="new_Iot.fields_new"></a>
 
 ### new Fields(sdk, request, baseUrl)
 
@@ -19,7 +19,7 @@ Module that provides access to field information
 | request | <code>Object</code> | An instance of the request module tied to this   module's audience |
 | baseUrl | <code>string</code> | The base URL provided by the parent module |
 
-<a name="Fields+get"></a>
+<a name="Iot.fields+get"></a>
 
 ### contxtSdk.iot.fields.get(outputFieldId) ⇒ <code>Promise</code>
 Gets information about a field
@@ -27,7 +27,7 @@ Gets information about a field
 API Endpoint: '/fields/:fieldId'
 Method: GET
 
-**Kind**: instance method of [<code>Fields</code>](#Fields)  
+**Kind**: instance method of [<code>fields</code>](#Iot.fields)  
 **Fulfill**: [<code>OutputField</code>](./Typedefs.md#OutputField) Information about the output field  
 **Reject**: <code>Error</code>  
 

@@ -21,20 +21,9 @@ enabled in Auth0.</p>
 <dt><a href="./ContxtSdk.md">ContxtSdk</a></dt>
 <dd><p>ContxtSdk constructor</p>
 </dd>
-<dt><a href="./CostCenters.md">CostCenters</a></dt>
-<dd><p>Module that provides access to cost centers, and helps manage
-the relationship between those cost centers and facilities</p>
-</dd>
 <dt><a href="./Facilities.md">Facilities</a></dt>
 <dd><p>Module that provides access to, and the manipulation
 of, information about different facilities</p>
-</dd>
-<dt><a href="./FacilityGroupings.md">FacilityGroupings</a></dt>
-<dd><p>Module that provides access to facility groupings, and helps manage
-the relationship between those groupings and facilities</p>
-</dd>
-<dt><a href="./Fields.md">Fields</a></dt>
-<dd><p>Module that provides access to field information</p>
 </dd>
 <dt><a href="./Iot.md">Iot</a></dt>
 <dd><p>Module that provides access to real time IOT feeds and fields.</p>
@@ -43,9 +32,6 @@ the relationship between those groupings and facilities</p>
 <dd><p>A SessionType that allows machine to machine communication between Node.js servers. This would
 only be used in Node.js applications. This SessionType requires a client id and a client secret,
 which are obtained from Auth0.</p>
-</dd>
-<dt><a href="./Outputs.md">Outputs</a></dt>
-<dd><p>Module that provides access to output information</p>
 </dd>
 <dt><a href="./Request.md">Request</a></dt>
 <dd></dd>

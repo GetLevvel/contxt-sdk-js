@@ -28,6 +28,7 @@ import {
  * Module that provides access to cost centers, and helps manage
  * the relationship between those cost centers and facilities
  *
+ * @alias Facilities.costCenters
  * @typicalname contxtSdk.facilities.costCenters
  */
 class CostCenters {

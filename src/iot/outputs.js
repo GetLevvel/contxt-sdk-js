@@ -27,6 +27,7 @@ import { formatOutputFieldDataFromServer } from '../utils/iot';
 /**
  * Module that provides access to output information
  *
+ * @alias iot.fields
  * @typicalname contxtSdk.iot.outputs
  */
 class Outputs {

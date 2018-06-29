@@ -1,22 +1,22 @@
-<a name="FacilityGroupings"></a>
+<a name="Facilities.groupings"></a>
 
-## FacilityGroupings
+## Facilities.groupings
 Module that provides access to facility groupings, and helps manage
 the relationship between those groupings and facilities
 
-**Kind**: global class  
+**Kind**: static class of [<code>Facilities</code>](#Facilities)  
 
-* [FacilityGroupings](#FacilityGroupings)
-    * [new FacilityGroupings(sdk, request, baseUrl)](#new_FacilityGroupings_new)
-    * [.addFacility(facilityGroupingId, facilityId)](#FacilityGroupings+addFacility) ⇒ <code>Promise</code>
-    * [.create(facilityGrouping)](#FacilityGroupings+create) ⇒ <code>Promise</code>
-    * [.delete(facilityGroupingId)](#FacilityGroupings+delete) ⇒ <code>Promise</code>
-    * [.getAll()](#FacilityGroupings+getAll) ⇒ <code>Promise</code>
-    * [.getAllByOrganizationId(organizationId)](#FacilityGroupings+getAllByOrganizationId) ⇒ <code>Promise</code>
-    * [.removeFacility(facilityGroupingId, facilityId)](#FacilityGroupings+removeFacility) ⇒ <code>Promise</code>
-    * [.update(facilityGroupingId, update)](#FacilityGroupings+update) ⇒ <code>Promise</code>
+* [.groupings](#Facilities.groupings)
+    * [new FacilityGroupings(sdk, request, baseUrl)](#new_Facilities.groupings_new)
+    * [.addFacility(facilityGroupingId, facilityId)](#Facilities.groupings+addFacility) ⇒ <code>Promise</code>
+    * [.create(facilityGrouping)](#Facilities.groupings+create) ⇒ <code>Promise</code>
+    * [.delete(facilityGroupingId)](#Facilities.groupings+delete) ⇒ <code>Promise</code>
+    * [.getAll()](#Facilities.groupings+getAll) ⇒ <code>Promise</code>
+    * [.getAllByOrganizationId(organizationId)](#Facilities.groupings+getAllByOrganizationId) ⇒ <code>Promise</code>
+    * [.removeFacility(facilityGroupingId, facilityId)](#Facilities.groupings+removeFacility) ⇒ <code>Promise</code>
+    * [.update(facilityGroupingId, update)](#Facilities.groupings+update) ⇒ <code>Promise</code>
 
-<a name="new_FacilityGroupings_new"></a>
+<a name="new_Facilities.groupings_new"></a>
 
 ### new FacilityGroupings(sdk, request, baseUrl)
 
@@ -26,7 +26,7 @@ the relationship between those groupings and facilities
 | request | <code>Object</code> | An instance of the request module tied to this module's audience. |
 | baseUrl | <code>string</code> | The base URL provided by the parent module |
 
-<a name="FacilityGroupings+addFacility"></a>
+<a name="Facilities.groupings+addFacility"></a>
 
 ### contxtSdk.facilities.groupings.addFacility(facilityGroupingId, facilityId) ⇒ <code>Promise</code>
 Adds a facility to a facility grouping
@@ -34,7 +34,7 @@ Adds a facility to a facility grouping
 API Endpoint: '/groupings/:facilityGroupingId/facilities/:facilityId'
 Method: POST
 
-**Kind**: instance method of [<code>FacilityGroupings</code>](#FacilityGroupings)  
+**Kind**: instance method of [<code>groupings</code>](#Facilities.groupings)  
 **Fulfill**: [<code>FacilityGroupingFacility</code>](./Typedefs.md#FacilityGroupingFacility) Information about the new facility/grouping relationship  
 **Reject**: <code>Error</code>  
 
@@ -50,7 +50,7 @@ contxtSdk.facilities.groupings
   .then((grouping) => console.log(grouping))
   .catch((err) => console.log(err));
 ```
-<a name="FacilityGroupings+create"></a>
+<a name="Facilities.groupings+create"></a>
 
 ### contxtSdk.facilities.groupings.create(facilityGrouping) ⇒ <code>Promise</code>
 Creates a new facility grouping
@@ -58,7 +58,7 @@ Creates a new facility grouping
 API Endpoint: '/groupings'
 Method: POST
 
-**Kind**: instance method of [<code>FacilityGroupings</code>](#FacilityGroupings)  
+**Kind**: instance method of [<code>groupings</code>](#Facilities.groupings)  
 **Fulfill**: [<code>FacilityGrouping</code>](./Typedefs.md#FacilityGrouping) Information about the new facility grouping  
 **Reject**: <code>Error</code>  
 
@@ -84,7 +84,7 @@ contxtSdk.facilities.groupings
   .then((grouping) => console.log(grouping))
   .catch((err) => console.log(err));
 ```
-<a name="FacilityGroupings+delete"></a>
+<a name="Facilities.groupings+delete"></a>
 
 ### contxtSdk.facilities.groupings.delete(facilityGroupingId) ⇒ <code>Promise</code>
 Delete a facility groupings
@@ -92,7 +92,7 @@ Delete a facility groupings
 API Endpoint: '/groupings/:facilityGroupingId'
 Method: DELETE
 
-**Kind**: instance method of [<code>FacilityGroupings</code>](#FacilityGroupings)  
+**Kind**: instance method of [<code>groupings</code>](#Facilities.groupings)  
 **Fulfill**: <code>undefined</code>  
 **Reject**: <code>Error</code>  
 
@@ -106,7 +106,7 @@ contxtSdk.facilities.groupings.delete(
   'e4fec739-56aa-4b50-8dab-e9d6b9c91a5d'
 );
 ```
-<a name="FacilityGroupings+getAll"></a>
+<a name="Facilities.groupings+getAll"></a>
 
 ### contxtSdk.facilities.groupings.getAll() ⇒ <code>Promise</code>
 Get a listing of all facility groupings available to a user. Includes public groupings across
@@ -115,7 +115,7 @@ any organization the user has access to and the user's private groupings.
 API Endpoint: '/groupings'
 Method: GET
 
-**Kind**: instance method of [<code>FacilityGroupings</code>](#FacilityGroupings)  
+**Kind**: instance method of [<code>groupings</code>](#Facilities.groupings)  
 **Fulfill**: <code>FacilityGrouping[]</code>  
 **Reject**: <code>Error</code>  
 **Example**  
@@ -125,7 +125,7 @@ contxtSdk.facilites.groupings
   .then((groupings) => console.log(groupings))
   .catch((err) => console.log(err));
 ```
-<a name="FacilityGroupings+getAllByOrganizationId"></a>
+<a name="Facilities.groupings+getAllByOrganizationId"></a>
 
 ### contxtSdk.facilities.groupings.getAllByOrganizationId(organizationId) ⇒ <code>Promise</code>
 Get a listing of all facility groupings for an organization. Includes public groupings
@@ -134,7 +134,7 @@ across that specific organization and the user's private groupings for that orga
 API Endpoint: '/organizations/:organizationId/groupings'
 Method: GET
 
-**Kind**: instance method of [<code>FacilityGroupings</code>](#FacilityGroupings)  
+**Kind**: instance method of [<code>groupings</code>](#Facilities.groupings)  
 **Fulfill**: <code>FacilityGrouping[]</code>  
 **Reject**: <code>Error</code>  
 
@@ -149,7 +149,7 @@ contxtSdk.facilites.groupings
   .then((groupings) => console.log(groupings))
   .catch((err) => console.log(err));
 ```
-<a name="FacilityGroupings+removeFacility"></a>
+<a name="Facilities.groupings+removeFacility"></a>
 
 ### contxtSdk.facilities.groupings.removeFacility(facilityGroupingId, facilityId) ⇒ <code>Promise</code>
 Removes a facility from a facility grouping
@@ -157,7 +157,7 @@ Removes a facility from a facility grouping
 API Endpoint: '/groupings/:facilityGroupingId/facilities/:facilityId'
 Method: DELETE
 
-**Kind**: instance method of [<code>FacilityGroupings</code>](#FacilityGroupings)  
+**Kind**: instance method of [<code>groupings</code>](#Facilities.groupings)  
 **Reject**: <code>Error</code>  
 
 | Param | Type | Description |
@@ -171,7 +171,7 @@ contxtSdk.facilities.groupings
   .removeFacility('b3dbaae3-25dd-475b-80dc-66296630a8d0', 4)
   .catch((err) => console.log(err));
 ```
-<a name="FacilityGroupings+update"></a>
+<a name="Facilities.groupings+update"></a>
 
 ### contxtSdk.facilities.groupings.update(facilityGroupingId, update) ⇒ <code>Promise</code>
 Updates an existing facility grouping
@@ -179,7 +179,7 @@ Updates an existing facility grouping
 API Endpoint: '/groupings/:facilityGroupingId'
 Method: PUT
 
-**Kind**: instance method of [<code>FacilityGroupings</code>](#FacilityGroupings)  
+**Kind**: instance method of [<code>groupings</code>](#Facilities.groupings)  
 **Fulfill**: [<code>FacilityGrouping</code>](./Typedefs.md#FacilityGrouping) Information about the updated facility grouping  
 **Reject**: <code>Error</code>  
 
