@@ -351,7 +351,7 @@ class Events {
 
     return this._request
       .get(`${this._baseUrl}/facilities/${facilityId}/triggered-events`, {
-        params: toSnakeCase(triggeredEventFilters)
+        params: triggeredEventFilters
       })
       .then((events) => formatPaginatedDataFromServer(events));
   }
@@ -461,9 +461,7 @@ class Events {
     }
 
     return this._request.delete(
-      `${
-        this._baseUrl
-      }/users/${userId}/subscriptions/${userEventSubscriptionId}`
+      `${this._baseUrl}/users/${userId}/subscriptions/${userEventSubscriptionId}`
     );
   }
 
