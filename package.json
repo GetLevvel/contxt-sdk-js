@@ -59,12 +59,14 @@
     ]
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.9.0",
     "auth0-js": "^9.3.0",
     "axios": "^0.19.0",
     "change-case": "^3.0.2",
     "lodash.has": "^4.5.2",
     "lodash.isplainobject": "^4.0.6",
     "lodash.once": "^4.1.1",
+    "react-native-auth0": "git+https://git@github.com/GetLevvel/react-native-auth0.git#feature/contxt-sdk-js-integration",
     "url-parse": "^1.4.3",
     "uuid": "^3.3.2",
     "ws": "^6.1.3"

@@ -206,6 +206,17 @@ A single audience used for authenticating and communicating with an individual A
 | accessToken | <code>string</code> | 
 | expiresAt | <code>number</code> | 
 
+<a name="Auth0WebAuthSessionInfo"></a>
+
+## Auth0WebAuthSessionInfo : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| accessToken | <code>string</code> | 
+| expiresAt | <code>number</code> | 
+
 <a name="AxiosInterceptor"></a>
 
 ## AxiosInterceptor : <code>Object</code>
@@ -1270,6 +1281,22 @@ User provided configuration options
 | mediumType | <code>string</code> |  |
 | updatedAt | <code>string</code> | ISO 8601 Extended Format date/time string |
 | userId | <code>string</code> |  |
+
+<a name="UserProfile"></a>
+
+## UserProfile : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| email | <code>string</code> |  |
+| email_verified | <code>boolean</code> |  |
+| name | <code>string</code> |  |
+| nickname | <code>string</code> |  |
+| picture | <code>string</code> | URL to an avatar |
+| sub | <code>string</code> | The Subject Claim of the user's JWT |
+| updatedAt | <code>string</code> | ISO 8601 Extended Format date/time string |
 
 <a name="UserProfile"></a>
 

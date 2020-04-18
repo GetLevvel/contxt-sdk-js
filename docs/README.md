@@ -31,6 +31,20 @@ enabled in Auth0.</p>
 <p><em>NOTE</em>: The web origin added in auth0 should be something like
 &quot;<a href="http://localhost:5000&quot;">http://localhost:5000&quot;</a>, not &quot;<a href="http://localhost:5000/callback&quot;">http://localhost:5000/callback&quot;</a></p>
 </dd>
+<dt><a href="./Auth0WebAuthNative.md">Auth0WebAuthNative</a> : <code><a href="./Typedefs.md#SessionType">SessionType</a></code></dt>
+<dd><p>A SessionType that allows the user to initially authenticate with Auth0 and then gain a valid JWT
+from the Contxt Auth service. This would only be used in web applications. You will need to
+integrate this module&#39;s <code>logIn</code>, <code>logOut</code>, and <code>handleAuthentication</code> methods with your UI
+elements. <code>logIn</code> would be tied to a UI element to log the user in. <code>logOut</code> would be tied to a
+UI element to log the user out. <code>handleAuthentication</code> would be tied with your application&#39;s
+router and would be called when visting the route defined by <code>config.authorizationPath</code> (the
+default is <code>/callback</code>).</p>
+<p>This SessionType is set up to refresh auth tokens automatically. To ensure this works, make sure
+your single page application has <a href="https://auth0.com/docs/cross-origin-authentication#configure-your-application-for-cross-origin-authentication">Cross-Origin Authentication</a>
+enabled in Auth0.</p>
+<p><em>NOTE</em>: The web origin added in auth0 should be something like
+&quot;<a href="http://localhost:5000&quot;">http://localhost:5000&quot;</a>, not &quot;<a href="http://localhost:5000/callback&quot;">http://localhost:5000/callback&quot;</a></p>
+</dd>
 <dt><a href="./BrowserBus.md">BrowserBus</a></dt>
 <dd><p>Module that provides access to the message bus. This is for browser
 environments. Documentation for Node environments is found under <code>Bus</code>.</p>
@@ -173,6 +187,8 @@ environments. Documentation for browser environments is found under
 <dt><a href="./Typedefs.md#Audience">Audience</a> : <code>Object</code></dt>
 <dd><p>A single audience used for authenticating and communicating with an individual API.</p>
 </dd>
+<dt><a href="./Typedefs.md#Auth0WebAuthSessionInfo">Auth0WebAuthSessionInfo</a> : <code>Object</code></dt>
+<dd></dd>
 <dt><a href="./Typedefs.md#Auth0WebAuthSessionInfo">Auth0WebAuthSessionInfo</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="./Typedefs.md#AxiosInterceptor">AxiosInterceptor</a> : <code>Object</code></dt>
@@ -322,6 +338,8 @@ the optional methods are documented below.</p>
 <dd><p>User provided configuration options</p>
 </dd>
 <dt><a href="./Typedefs.md#UserEventSubscription">UserEventSubscription</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="./Typedefs.md#UserProfile">UserProfile</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="./Typedefs.md#UserProfile">UserProfile</a> : <code>Object</code></dt>
 <dd></dd>
