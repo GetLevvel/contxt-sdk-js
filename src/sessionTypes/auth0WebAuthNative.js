@@ -1,7 +1,6 @@
 import Auth0 from 'react-native-auth0';
 import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
-import URL from 'url-parse';
 
 /**
  * @typedef {Object} UserProfile
@@ -79,30 +78,14 @@ class Auth0WebAuthNative {
 
     this._onAuthenticate =
       this._sdk.config.auth.onAuthenticate || this._defaultOnAuthenticate;
-    // this._sessionInfo = this._getStoredSession();
-    // this._sessionRenewalTimeout = null;
-    // this._tokenPromises = {};
-
-    // const currentUrl = new URL(window.location);
-    // currentUrl.set('pathname', this._sdk.config.auth.authorizationPath);
+    this._getStoredSession().then((sessionInfo) => {
+      this._sessionInfo = sessionInfo;
+    });
 
     this._auth0 = new Auth0({
       clientId: this._sdk.config.auth.clientId,
       domain: 'ndustrial.auth0.com'
     });
-
-    // this._auth0 = new auth0.WebAuth({
-    //   audience: this._sdk.config.audiences.contxtAuth.clientId,
-    //   clientID: this._sdk.config.auth.clientId,
-    //   domain: 'ndustrial.auth0.com',
-    //   redirectUri: `${currentUrl.origin}${currentUrl.pathname}`,
-    //   responseType: 'token',
-    //   scope: 'email profile openid'
-    // });
-
-    // if (this.isAuthenticated()) {
-    //   this._scheduleSessionRefresh();
-    // }
   }
 
   /**
@@ -181,24 +164,19 @@ class Auth0WebAuthNative {
    * @rejects {Error}
    */
   getProfile() {
-    return new Promise((resolve, reject) => {
-      this._auth0.client.userInfo(
-        this._sessionInfo.accessToken,
-        (err, profile) => {
-          if (err) {
-            return reject(err);
-          }
+    return this._auth0
+      .users(this._sessionInfo.accessToken)
+      .getUser()
+      .then((profile) => {
+        const formattedProfile = {
+          ...profile,
+          updatedAt: profile.updated_at
+        };
+        delete formattedProfile.updated_at;
 
-          const formattedProfile = {
-            ...profile,
-            updatedAt: profile.updated_at
-          };
-          delete formattedProfile.updated_at;
-
-          resolve(formattedProfile);
-        }
-      );
-    });
+        return formattedProfile;
+      })
+      .catch((err) => err);
   }
 
   /**
@@ -217,6 +195,7 @@ class Auth0WebAuthNative {
      *
      * We still want this method here for interop with web/native
      */
+    return Promise.resolve(this.sessionInfo.accessToken);
   }
 
   /**
@@ -239,16 +218,9 @@ class Auth0WebAuthNative {
    * @param {Boolean} [options.forceLogin = false] When true will bypass any sso settings in the authorization provider
    */
   logIn(options = {}) {
-    // let authOptions = {};
-
-    // if (options.forceLogin) {
-    //   authOptions.prompt = 'login';
-    // }
-    // this._auth0.authorize(authOptions);
-
     const authOptions = {
       responseType: 'token',
-      audience: this._sdk.audiences.contxtAuth.clientId,
+      audience: this._sdk.config.audiences.contxtAuth.clientId,
       scope: 'email profile openid'
     };
 
@@ -259,9 +231,10 @@ class Auth0WebAuthNative {
     const loginPromise = this._auth0.webAuth
       .authorize(authOptions)
       .then((success) => {
-        // put this success in local storage https://github.com/react-native-community/async-storage
-        // for now let's just put it on the object
-        this._storeSession(success);
+        this._storeSession({
+          accessToken: success.idToken,
+          expiresIn: success.expiresIn
+        });
       })
       .catch((err) => {
         console.log(`Error while handling authentication: ${err}`);
@@ -274,23 +247,15 @@ class Auth0WebAuthNative {
    * Logs the user out by removing any stored session info, clearing any token
    * renewal, and redirecting to the root
    *
-   * @param {Object} options
-   * @param {Boolean} [options.federated = false] Indicator for if Auth0 should
-   *   attempt to log out the user from an external IdP
-   * @param {String} [options.returnTo = window.location.origin] URL that the
-   *   user will be redirected to after a successful log out
    */
-  logOut(options) {
+  logOut() {
     this._sessionInfo = {};
     this._tokenPromises = {};
 
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('expires_at');
+    AsyncStorage.removeItem('@accessToken');
+    AsyncStorage.removeItem('@expiresAt');
 
-    this._auth0.logout({
-      returnTo: new URL(window.location).origin,
-      ...options
-    });
+    this._auth0.webAuth.logout();
   }
 
   /**
@@ -312,11 +277,27 @@ class Auth0WebAuthNative {
    *
    * @private
    */
-  _getStoredSession() {
-    return {
-      accessToken: '', // localStorage.getItem('access_token'),
-      expiresAt: '' // JSON.parse(localStorage.getItem('expires_at'))
-    };
+  async _getStoredSession() {
+    try {
+      const accessToken = await AsyncStorage.getItem('@accessToken');
+      const expiresAt = Number.parseInt(
+        await AsyncStorage.getItem('@expiresAt')
+      );
+      console.log(
+        'Retrieved stored session: ' +
+          JSON.stringify({ accessToken, expiresAt })
+      );
+      return {
+        accessToken,
+        expiresAt
+      };
+    } catch (err) {
+      console.log('Unable to read from local storage');
+      return {
+        accessToken: '',
+        expiresAt: ''
+      };
+    }
   }
 
   _generateUnauthorizedError(err) {
@@ -347,22 +328,14 @@ class Auth0WebAuthNative {
    * @private
    */
   _storeSession({ accessToken, expiresIn }) {
-    // const expiresAt = expiresIn * 1000 + Date.now();
-
-    // localStorage.setItem('access_token', accessToken);
-    // localStorage.setItem('expires_at', JSON.stringify(expiresAt));
-
-    // this._sessionInfo.accessToken = accessToken;
-    // this._sessionInfo.expiresAt = expiresAt;
-
     const expiresAt = expiresIn * 1000 + Date.now();
-
-    AsyncStorage.setItem('@access_token', accessToken);
-
-    AsyncStorage.setItem('@expires_at', expiresAt);
 
     this._sessionInfo.accessToken = accessToken;
     this._sessionInfo.expiresAt = expiresAt;
+
+    AsyncStorage.setItem('@accessToken', accessToken);
+    // Async storage behavior is undefined for values that aren't strings
+    AsyncStorage.setItem('@expiresAt', expiresAt.toString());
   }
 }
 

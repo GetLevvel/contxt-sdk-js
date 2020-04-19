@@ -27,7 +27,7 @@ enabled in Auth0.
     * [.handleAuthentication()](#Auth0WebAuthNative+handleAuthentication) ⇒ <code>Promise</code>
     * [.isAuthenticated()](#Auth0WebAuthNative+isAuthenticated) ⇒ <code>boolean</code>
     * [.logIn(options)](#Auth0WebAuthNative+logIn)
-    * [.logOut(options)](#Auth0WebAuthNative+logOut)
+    * [.logOut()](#Auth0WebAuthNative+logOut)
 
 <a name="new_Auth0WebAuthNative_new"></a>
 
@@ -129,15 +129,8 @@ Starts the Auth0 log in process
 
 <a name="Auth0WebAuthNative+logOut"></a>
 
-### contxtSdk.auth.logOut(options)
+### contxtSdk.auth.logOut()
 Logs the user out by removing any stored session info, clearing any token
 renewal, and redirecting to the root
 
 **Kind**: instance method of [<code>Auth0WebAuthNative</code>](#Auth0WebAuthNative)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| options | <code>Object</code> |  |  |
-| [options.federated] | <code>Boolean</code> | <code>false</code> | Indicator for if Auth0 should   attempt to log out the user from an external IdP |
-| [options.returnTo] | <code>String</code> | <code>window.location.origin</code> | URL that the   user will be redirected to after a successful log out |
-
